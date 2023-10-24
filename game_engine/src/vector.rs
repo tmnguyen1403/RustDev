@@ -9,15 +9,16 @@ pub struct Vector {
     x: Real,
     y: Real,
     z: Real,
+    _pad: Real //since Rust does not support private field, this _pad is private and is not supposed to be used
 }
 
 impl Vector {
     pub fn new(x: Real, y: Real, z: Real) -> Self {
-        Vector { x, y, z }
+        Vector { x, y, z, _pad: 0.0 }
     }
 
     pub fn default() -> Self {
-        Vector { x: 0.0, y: 0.0, z: 0.0}
+        Vector { x: 0.0, y: 0.0, z: 0.0, _pad: 0.0}
     }
 
     pub fn magnitude(&self) -> Real {
@@ -33,6 +34,7 @@ impl Vector {
             x: self.y * other.z - self.z * other.y,
             y: self.z * other.x - self.x * other.z,
             z: self.x * other.y - self.y * other.x,
+            _pad: 0.0
         }
     }
 
@@ -51,6 +53,7 @@ impl Add for Vector {
             x: self.x + other.x,
             y: self.y + other.y,
             z: self.z + other.z,
+            _pad: 0.0
         }
     }
 }
@@ -63,6 +66,7 @@ impl Sub for Vector {
             x: self.x - other.x,
             y: self.y - other.y,
             z: self.z - other.z,
+            _pad: 0.0
         }
     }
 }
@@ -75,6 +79,7 @@ impl Mul<Real> for Vector {
             x: self.x * scalar,
             y: self.y * scalar,
             z: self.z * scalar,
+            _pad: 0.0
         }
     }
 }

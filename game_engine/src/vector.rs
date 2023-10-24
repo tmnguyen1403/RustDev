@@ -16,6 +16,10 @@ impl Vector {
         Vector { x, y, z }
     }
 
+    pub fn default() -> Self {
+        Vector { x: 0.0, y: 0.0, z: 0.0}
+    }
+
     pub fn magnitude(&self) -> Real {
         (self.x.powi(2) + self.y.powi(2) + self.z.powi(2)).sqrt()
     }
@@ -30,6 +34,12 @@ impl Vector {
             y: self.z * other.x - self.x * other.z,
             z: self.x * other.y - self.y * other.x,
         }
+    }
+
+    pub fn invert(&mut self){
+        self.x = -self.x;
+        self.y = -self.y;
+        self.z = -self.z;
     }
 }
 
